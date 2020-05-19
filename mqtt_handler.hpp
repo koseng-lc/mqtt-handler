@@ -25,10 +25,10 @@ public:
         )
     }
     ~MQTTHandler(){
-        cli_.disconnect();
+
     }
 
-    auto send(const std::string& _topic, const std::string& _data) -> void{
+    auto send(const std::string& _topic, const std::string& _data){
         auto msg( mqtt::make_message(_topic, _data) );
         msg->set_qos(qos_);
         MICRON_MQTT_EXCEPTIONAL_HANDLER(
